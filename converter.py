@@ -7,13 +7,11 @@ def convert_to_ipynb(py_file, ipynb_file):
     with open(py_file, 'r') as f:
         content = f.read()
 
-    # Split the content using triple quotes
+    # Split the content using triple quotes also making sure that first line is a code block
     blocks = re.split("'''", content)
-
-    # Create a new Jupyter Notebook
+    
     nb = new_notebook()
 
-    # Iterate through the blocks, adding either Markdown or code cells
     for i, block in enumerate(blocks):
         if i % 2 == 0:  # Code block
             if block.strip():
@@ -22,13 +20,12 @@ def convert_to_ipynb(py_file, ipynb_file):
             if block.strip():
                 nb.cells.append(new_markdown_cell(block.strip()))
 
-    # Save the Jupyter Notebook
     with open(ipynb_file, 'w') as f:
         nbformat.write(nb, f)
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print('Usage: python convert_to_ipynb.py input.py output.ipynb')
+        print('you need to pass the correct amount of arguments\nexample: python3 path/to/python/file path/to/ipynb/file')
         sys.exit(1)
 
     py_file = sys.argv[1]
