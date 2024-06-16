@@ -18,5 +18,11 @@ You can install the necessary dependencies by using pip the following way:
 ```sh
 pip install -r requirements.txt
 ```
+
+## Usage  
+to run the script, use the following command in your terminal:  
+```sh
+python3 path/to/convert_to_ipynb.py path/to/your_script.py path/to/output_notebook.ipynb
+```
 ## Acknowledgments
 The nbformat library for providing the tools necessary to create and manipulate Jupyter Notebooks.
